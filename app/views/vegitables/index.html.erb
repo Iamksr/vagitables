@@ -1,0 +1,172 @@
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<br><br><br>
+<div class="container">
+    <h3 class="h3">Vegitable Garden </h3>
+    <div class="row">
+    <% @vegitables.each do |vegitable| %>
+        <div class="col-md-3 col-sm-6">
+            <div class="vegitable-grid4">
+                <div class="img-hover-zoom">
+                    <a href="#">
+                      <%= image_tag(vegitable.image_url, :size => "160x180") %>
+                        
+                    </a>
+                    <ul class="social">
+                        <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
+                        <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-cart"></i></a></li>
+                        <!-- <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li> -->
+                    </ul>
+                    <span class="vegitable-new-label">New</span>
+
+                   <span class="vegitable-discount-label"><%= vegitable.discount_percentage.to_f.round(2) %>%</span>
+                   (<%= vegitable.discount_percentage.to_f.round(2)%> 
+                </div>
+                
+                <div class="vegitable-content">
+                     <h3 style="min-height: 70px !important;"><%= vegitable.name %></h3>
+                    <div class="price">
+                      ₹<%= vegitable.price%>
+                   <s>₹<%=vegitable.current_price %></s>  
+                    </div>
+                    <a class="add-to-cart" href="#">ADD TO CART</a>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div><br>
+ 
+</div>
+<%= link_to 'New Vegitable', new_vegitable_path %>
+
+
+<br>
+<style type="text/css">
+  body{
+  background-image: linear-gradient(to right, #fbe2eb 0%, #a9c1ee 51%, #fbe2eb 100%);
+}
+  vegitable-grid4,.vegitable-grid4 .vegitable-image4{position:relative}
+.vegitable-grid4{font-family:Poppins,sans-serif;text-align:center;border-radius:5px;overflow:hidden;z-index:1;transition:all .3s ease 0s}
+.vegitable-grid4:hover{box-shadow:0 0 10px rgba(0,0,0,.2)}
+.vegitable-grid4 .vegitable-image4 a{display:block}
+.vegitable-grid4 .vegitable-image4 img{width:100%;height:auto}
+.vegitable-grid4 .pic-1{opacity:1;transition:all .5s ease-out 0s}
+.vegitable-grid4:hover .pic-1{opacity:0}
+.vegitable-grid4 .pic-2{position:absolute;top:0;left:0;opacity:0;transition:all .5s ease-out 0s}
+.vegitable-grid4:hover .pic-2{opacity:1}
+.vegitable-grid4 .social{width:180px;padding:0;margin:0 auto;list-style:none;position:absolute;right:0;left:0;top:50%;transform:translateY(-50%);transition:all .3s ease 0s}
+.vegitable-grid4 .social li{display:inline-block;opacity:0;transition:all .7s}
+.vegitable-grid4 .social li:nth-child(1){transition-delay:.15s}
+.vegitable-grid4 .social li:nth-child(2){transition-delay:.3s}
+.vegitable-grid4 .social li:nth-child(3){transition-delay:.45s}
+.vegitable-grid4:hover .social li{opacity:1}
+.vegitable-grid4 .social li a{color:#222;background:#fff;font-size:17px;line-height:36px;width:40px;height:36px;border-radius:2px;margin:0 5px;display:block;transition:all .3s ease 0s}
+.vegitable-grid4 .social li a:hover{color:#fff;background:#16a085}
+.vegitable-grid4 .social li a:after,.vegitable-grid4 .social li a:before{content:attr(data-tip);color:#fff;background-color:#000;font-size:12px;line-height:20px;border-radius:3px;padding:0 5px;white-space:nowrap;opacity:0;transform:translateX(-50%);position:absolute;left:50%;top:-30px}
+.vegitable-grid4 .social li a:after{content:'';height:15px;width:15px;border-radius:0;transform:translateX(-50%) rotate(45deg);top:-22px;z-index:-1}
+.vegitable-grid4 .social li a:hover:after,.vegitable-grid4 .social li a:hover:before{opacity:1}
+.vegitable-grid4 .vegitable-discount-label,.vegitable-grid4 .vegitable-new-label{color:#fff;background-color:#16a085;font-size:13px;font-weight:800;text-transform:uppercase;line-height:45px;height:45px;width:45px;border-radius:50%;position:absolute;left:10px;top:15px;transition:all .3s}
+.vegitable-grid4 .vegitable-discount-label{left:auto;right:10px;background-color:#d7292a}
+.vegitable-grid4:hover .vegitable-new-label{opacity:0}
+.vegitable-grid4 .vegitable-content{padding:25px}
+.vegitable-grid4 .title{font-size:15px;font-weight:400;text-transform:capitalize;margin:0 0 7px;transition:all .3s ease 0s}
+.vegitable-grid4 .title a{color:#222}
+.vegitable-grid4 .title a:hover{color:#16a085}
+.vegitable-grid4 .price{color:#16a085;font-size:17px;font-weight:700;margin:0 2px 15px 0;display:block}
+.vegitable-grid4 .price span{color:#909090;font-size:13px;font-weight:400;letter-spacing:0;text-decoration:line-through;text-align:left;vertical-align:middle;display:inline-block}
+.vegitable-grid4 .add-to-cart{border:1px solid #e5e5e5;display:inline-block;padding:10px 20px;color:#888;font-weight:600;font-size:14px;border-radius:4px;transition:all .3s}
+.vegitable-grid4:hover .add-to-cart{border:1px solid transparent;background:#16a085;color:#fff}
+.vegitable-grid4 .add-to-cart:hover{background-color:#505050;box-shadow:0 0 10px rgba(0,0,0,.5)}
+@media only screen and (max-width:990px){.vegitable-grid4{margin-bottom:30px}
+}
+/* [1] The container */
+.img-hover-zoom {
+  height: 300px; /* [1.1] Set it as per your need */
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+.img-hover-zoom img {
+  transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.img-hover-zoom:hover img {
+  transform: scale(1.5);
+}
+</style>
+
+</style>
+
+<style type="text/css">
+  .pag-link {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 2px;
+}
+.pag-link.disabled > span,
+.pag-link.current > span,
+.pag-link > a{
+    display: block;
+    border-radius: 30%;
+    font-size: 16px;
+    line-height: 1.42857;
+    margin-right: 5px;
+    padding: 10px 17px;
+    position: relative;
+    text-decoration: none;
+    border: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.pag-link:active > a,
+.pag-link:hover > a,
+.pag-link:focus > a,
+.pag-link.current > span{
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+.pag-link > a{
+    background-color: #7f4189;
+    color: #fff;
+    cursor: pointer;
+}
+.pag-link.disabled > span,
+.pag-link.current > span{
+    background-color: #13b3bc;
+    color: #fff;
+    cursor: inherit;
+}
+.pag-link:active > a,
+.pag-link:hover > a,
+.pag-link:focus > a {
+    background-color: #ec217c !important;
+    border-color: #ec217c;
+    color: #fff;
+}
+
+</style>
+<!-- <script type="text/javascript">
+  /* Demo purposes only */
+$(".hover").mouseleave(
+  function () {
+    $(this).removeClass("hover");
+  }
+);
+</script>
+
+
+<script>
+  $(document).ready(function() {
+    $('#category').change(function(){
+      var cat = $('#category').val()
+      window.location = '/vegitables/?category_id=' + cat
+    });
+  });
+</script> -->

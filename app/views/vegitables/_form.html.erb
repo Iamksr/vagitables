@@ -1,0 +1,190 @@
+<%= form_with(model: vegitable, local: true) do |form| %>
+  <% if vegitable.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vegitable.errors.count, "error") %> prohibited this vegitable from being saved:</h2>
+
+      <ul>
+        <% vegitable.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class='row'>
+  <div class='order_form col-md-9'>
+    <div class='row'>
+      <div class='col-md-12'>
+        <div class="panel panel-default">
+          <center>
+            <div class="panel-heading"><strong>New Vegitable</strong></div>
+          </center>
+          <div class="panel-body">
+            <div class="card">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding select-room">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                  <p>Vegitables Name</p>
+                  <ul class="selectors input-text">
+                  <li><%= form.text_field :name, class: "form-control", min: 0%></li></ul>
+                </div>
+              </div>
+             
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding select-room">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                  <p>Category</p>
+                  <ul class="selectors input-text">
+                    <li> <%= form.collection_select :category_id, Category.order(:name), :id, :name, {prompt: "Select A Class"},class: "form-control"%></li>
+                  </ul>
+                </div>
+              </div>
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding select-room">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                  <p>Price</p>
+                  <ul class="selectors input-text">
+                    <li><%= form.text_field :price, class: "form-control", min: 0%></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding select-room">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                  <p>Current Price</p>
+                  <ul class="selectors input-text">
+                    <li><%= form.text_field :current_price, class: "form-control", min: 0 %></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding select-room">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                  <p>Image</p>
+                  <ul class="selectors input-text">
+                    <li><%= form.file_field :image, class: "form-control", min: 0 %></li>
+                  </ul>
+                </div>
+              </div>
+              <li></li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="action">
+  <%= form.submit "Add Vegitables",class: "btn-hover color-signup" %>
+</div>
+<%end%>
+<script type="text/javascript">
+  $(document).ready(function() {            
+    $('input').attr('required', true);   
+  });
+</script>
+<style type="text/css">
+  body{
+      font-family: "Marvel", sans-serif;
+}
+
+.card {
+  position: center;
+  display: inline-block;
+  width: 100%;
+  padding: 4rem 1rem 7rem 1rem;
+  background-color: teal;
+  position: relative;
+  border:0px !important;
+}
+.panel-heading {
+  font-family: "Times New Roman",American Typewriter, serif;
+  width: 100%;
+  background: linear-gradient(to right,#f9d62c,#006767);
+  font-size: 30px;
+}
+
+
+.card:after {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 0px;
+  background-color: skyblue;
+  top: 0px;
+  right: 0px;
+  border-bottom: 20px solid #006767;
+  border-left: 20px solid #006767;
+  border-right: 20px solid yellow;
+  border-top: 20px solid yellow;
+  position: absolute;
+  -webkit-filter: drop-shadow(-5px 5px 3px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(-5px 5px 3px rgba(0, 0, 0, 0.5));
+}
+.card:before {
+  content: "";
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-top: 40px solid #006767;
+  border-right: 40px solid #006767;
+  border-left: 40px solid yellow;
+  border-bottom: 40px solid yellow;
+  bottom: 0px;
+  left: 0px;
+  position: absolute;
+  -webkit-filter: drop-shadow(7px -7px 5px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(7px -7px 5px rgba(0, 0, 0, 0.5));
+  margin-right: 10%;
+}
+.card:nth-of-type(1) {
+  margin-right: 9%;
+}
+
+
+.ftr{
+    text-align: center;
+}
+}
+
+  .buttons {
+  margin: 10%;
+  text-align: center;
+  }
+  .btn-hover {
+  width: 150px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+  height: 55px;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  }
+  .btn-hover:hover {
+  background-position: 100% 0;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  }
+  .btn-hover:focus {
+  outline: none;
+  }
+  .btn-hover.color-signup {
+  background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a , #FBB03B);
+  box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+  }
+  .form-control{
+  border-radius: 30px;
+  }
+  .main-content {
+    text-align: center;
+    float: right;
+}
+</style>
+
+

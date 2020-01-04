@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @vegitable.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @vegitable.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @vegitable.price %>
+</p>
+
+<p>
+  <strong>Current price:</strong>
+  <%= @vegitable.current_price %>
+</p>
+<p>
+<strong>Category:</strong>
+<td><%=@vegitable.category.name%></td>
+</p>
+
+<p>
+  <strong>Image:</strong>
+ <td><%= image_tag(@vegitable.image.url, :size => "160x180") %></td>
+</p>
+
+
+
+<%= link_to 'Edit', edit_vegitable_path(@vegitable) %> |
+<%= link_to 'Back', vegitables_path %>
